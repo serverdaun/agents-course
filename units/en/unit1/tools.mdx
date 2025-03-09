@@ -70,8 +70,6 @@ We will implement a simplified **calculator** tool that will just multiply two i
 def calculator(a: int, b: int) -> int:
     """Multiply two integers."""
     return a * b
-
-print(calculator.to_string())
 ```
 
 So our tool is called `calculator`, it **multiplies two integers**, and it requires the following inputs:
@@ -84,7 +82,7 @@ The output of the tool is another integer number that we can describe like this:
 
 All of these details are important. Let's put them together in a text string that describes our tool for the LLM to understand.
 
-```
+```text
 Tool Name: calculator, Description: Multiply two integers., Arguments: a: int, b: int, Outputs: int
 ```
 
@@ -124,9 +122,9 @@ print(calculator.to_string())
 
 Note the `@tool` decorator before the function definition.
 
-With the implementation we'll see next, we will be able to retrieve the following text automatically from the source code:
+With the implementation we'll see next, we will be able to retrieve the following text automatically from the source code via the `to_string()` function provided by the decorator:
 
-```
+```text
 Tool Name: calculator, Description: Multiply two integers., Arguments: a: int, b: int, Outputs: int
 ```
 
@@ -274,7 +272,7 @@ print(calculator.to_string())
 
 And we can use the `Tool`'s `to_string` method to automatically retrieve a text suitable to be used as a tool description for an LLM:
 
-```
+```text
 Tool Name: calculator, Description: Multiply two integers., Arguments: a: int, b: int, Outputs: int
 ```
 
