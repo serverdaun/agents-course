@@ -92,6 +92,22 @@
     title: Quick Quiz 2
   - local: unit2/llama-index/conclusion
     title: Conclusion
+- title: Unit 2.3 LangGraph
+  sections:
+  - local: unit2/langgraph/introduction
+    title: Introduction to LangGraph
+  - local: unit2/langgraph/when_to_use_langgraph
+    title: What is LangGraph?
+  - local: unit2/langgraph/building_blocks
+    title: Building Blocks of LangGraph
+  - local: unit2/langgraph/first_graph
+    title: Building Your First LangGraph
+  - local: unit2/langgraph/document_analysis_agent
+    title: Document Analysis Graph
+  - local: unit2/langgraph/quiz1
+    title: Quick Quiz 1
+  - local: unit2/langgraph/conclusion
+    title: Conclusion
 - title: Bonus Unit 1. Fine-tuning an LLM for Function-calling
   sections:
   - local: bonus-unit1/introduction
