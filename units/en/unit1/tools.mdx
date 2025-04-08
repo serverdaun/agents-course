@@ -24,7 +24,7 @@ Here are some commonly used tools in AI agents:
 
 Those are only examples, as you can in fact create a tool for any use case!
 
-A good tool should be something that **complements the power of an LLM**. 
+A good tool should be something that **complements the power of an LLM**.
 
 For instance, if you need to perform arithmetic, giving a **calculator tool** to your LLM will provide better results than relying on the native capabilities of the model.
 
@@ -43,9 +43,13 @@ For instance, if you ask an LLM directly (without a search tool) for today's wea
 
 ## How do tools work?
 
-LLMs, as we saw, can only receive text inputs and generate text outputs. They have no way to call tools on their own. What we mean when we talk about _providing tools to an Agent_, is that we **teach** the LLM about the existence of tools, and ask the model to generate text that will invoke tools when it needs to. For example, if we provide a tool to check the weather at a location from the Internet, and then ask the LLM about the weather in Paris, the LLM will recognize that question as a relevant opportunity to use the "weather" tool we taught it about. The LLM will generate _text_, in the form of code, to invoke that tool. It is the responsibility of the **Agent** to parse the LLM's output, recognize that a tool call is required, and invoke the tool on the LLM's behalf. The output from the tool will then be sent back to the LLM, which will compose its final response for the user.
+LLMs, as we saw, can only receive text inputs and generate text outputs. They have no way to call tools on their own. When we talk about providing tools to an Agent, we mean teaching the LLM about the existence of these tools and instructing it to generate text-based invocations when needed.
 
-The output from a tool call is another type of message in the conversation. Tool calling steps are typically not shown to the user: the Agent retrieves the conversation, calls the tool(s), gets the outputs, adds them as a new conversation message, and sends the updated conversation to the LLM again. From the user's point of view, it's like the LLM had used the tool, but in fact it was our application code (the **Agent**) who did it.
+For example, if we provide a tool to check the weather at a location from the internet and then ask the LLM about the weather in Paris, the LLM will recognize that this is an opportunity to use the “weather” tool. Instead of retrieving the weather data itself, the LLM will generate text that represents a tool call, such as call weather_tool('Paris'). 
+
+The **Agent** then reads this response, identifies that a tool call is required, executes the tool on the LLM’s behalf, and retrieves the actual weather data. 
+
+The Tool-calling steps are typically not shown to the user: the Agent appends them as a new message before passing the updated conversation to the LLM again. The LLM then processes this additional context and generates a natural-sounding response for the user. From the user’s perspective, it appears as if the LLM directly interacted with the tool, but in reality, it was the Agent that handled the entire execution process in the background.
 
 We'll talk a lot more about this process in future sessions.
 
@@ -140,7 +144,7 @@ We create a generic `Tool` class that we can reuse whenever we need to use a too
 class Tool:
     """
     A class representing a reusable piece of code (Tool).
-    
+
     Attributes:
         name (str): Name of the tool.
         description (str): A textual description of what the tool does.
@@ -148,10 +152,10 @@ class Tool:
         arguments (list): A list of argument.
         outputs (str or list): The return type(s) of the wrapped function.
     """
-    def __init__(self, 
-                 name: str, 
-                 description: str, 
-                 func: callable, 
+    def __init__(self,
+                 name: str,
+                 description: str,
+                 func: callable,
                  arguments: list,
                  outputs: str):
         self.name = name
@@ -162,13 +166,13 @@ class Tool:
 
     def to_string(self) -> str:
         """
-        Return a string representation of the tool, 
+        Return a string representation of the tool,
         including its name, description, arguments, and outputs.
         """
         args_str = ", ".join([
             f"{arg_name}: {arg_type}" for arg_name, arg_type in self.arguments
         ])
-        
+
         return (
             f"Tool Name: {self.name},"
             f" Description: {self.description},"
@@ -219,40 +223,40 @@ def tool(func):
     """
     # Get the function signature
     signature = inspect.signature(func)
-    
+
     # Extract (param_name, param_annotation) pairs for inputs
     arguments = []
     for param in signature.parameters.values():
         annotation_name = (
-            param.annotation.__name__ 
-            if hasattr(param.annotation, '__name__') 
+            param.annotation.__name__
+            if hasattr(param.annotation, '__name__')
             else str(param.annotation)
         )
         arguments.append((param.name, annotation_name))
-    
+
     # Determine the return annotation
     return_annotation = signature.return_annotation
     if return_annotation is inspect._empty:
         outputs = "No return annotation"
     else:
         outputs = (
-            return_annotation.__name__ 
-            if hasattr(return_annotation, '__name__') 
+            return_annotation.__name__
+            if hasattr(return_annotation, '__name__')
             else str(return_annotation)
         )
-    
+
     # Use the function's docstring as the description (default if None)
     description = func.__doc__ or "No description provided."
-    
+
     # The function name becomes the Tool name
     name = func.__name__
-    
+
     # Return a new Tool instance
     return Tool(
-        name=name, 
-        description=description, 
-        func=func, 
-        arguments=arguments, 
+        name=name,
+        description=description,
+        func=func,
+        arguments=arguments,
         outputs=outputs
     )
 ```
@@ -281,6 +285,17 @@ The description is **injected** in the system prompt. Taking the example with wh
 <img src="https://huggingface.co/datasets/agents-course/course-images/resolve/main/en/unit1/Agent_system_prompt_tools.png" alt="System prompt for tools"/>
 
 In the [Actions](actions) section, we will learn more about how an Agent can **Call** this tool we just created.
+
+### Model Context Protocol (MCP): a unified tool interface
+
+Model Context Protocol (MCP) is an **open protocol** that standardizes how applications **provide tools to LLMs**.
+MCP provides:
+
+- A growing list of pre-built integrations that your LLM can directly plug into
+- The flexibility to switch between LLM providers and vendors
+- Best practices for securing your data within your infrastructure
+
+This means that **any framework implementing MCP can leverage tools defined within the protocol**, eliminating the need to reimplement the same tool interface for each framework.
 
 ---
 

@@ -27,17 +27,17 @@
   - local: unit1/quiz2
     title: 快速测验 2
   - local: unit1/agent-steps-and-structure
-    title: 通过思考-行动-观察循环理解 AI 代理
+    title: 通过思考-行动-观察循环理解 AI 智能体
   - local: unit1/thoughts
     title: 思考、内部推理和 Re-Act 方法
   - local: unit1/actions
-    title: 行动，使代理能够与环境交互
+    title: 行动，使智能体能够与环境交互
   - local: unit1/observations
     title: 观察，整合反馈以反思和适应
   - local: unit1/dummy-agent-library
-    title: 简单代理库
+    title: 简单智能体库
   - local: unit1/tutorial
-    title: 使用 Smolagents 创建我们的第一个代理
+    title: 使用 Smolagents 创建我们的第一个智能体
   - local: unit1/final-quiz
     title: 第 1 单元最终测验
   - local: unit1/conclusion
@@ -71,6 +71,42 @@
   - local: unit2/smolagents/final_quiz
     title: 最终测验
   - local: unit2/smolagents/conclusion
+    title: 结论
+- title: Unit 2.2 The LlamaIndex framework
+  sections:
+  - local: unit2/llama-index/introduction
+    title: LlamaIndex 简介
+  - local: unit2/llama-index/llama-hub
+    title: LlamaHub 简介
+  - local: unit2/llama-index/components
+    title: LlamaIndex 中的组件是什么？
+  - local: unit2/llama-index/tools
+    title: 在 LlamaIndex 中使用工具
+  - local: unit2/llama-index/quiz1
+    title: 快速测验1
+  - local: unit2/llama-index/agents
+    title: 在 LlamaIndex 中使用智能体
+  - local: unit2/llama-index/workflows
+    title: 在 LlamaIndex 中创建智能工作流
+  - local: unit2/llama-index/quiz2
+    title: 快速测验2
+  - local: unit2/llama-index/conclusion
+    title: 结论
+- title: Unit 2.3 LangGraph
+  sections:
+  - local: unit2/langgraph/introduction
+    title: LangGraph 是什么？
+  - local: unit2/langgraph/when_to_use_langgraph
+    title: 何时使用 LangGraph？
+  - local: unit2/langgraph/building_blocks
+    title: LangGraph 的构建模块
+  - local: unit2/langgraph/first_graph
+    title: 创建你的第一个 LangGraph
+  - local: unit2/langgraph/document_analysis_agent
+    title: 文档分析智能体
+  - local: unit2/langgraph/quiz1
+    title: 快速测验1
+  - local: unit2/langgraph/conclusion
     title: 结论
 - title: 附加单元 1. 为函数调用微调大型语言模型
   sections:

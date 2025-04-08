@@ -99,7 +99,8 @@ In this case, we will use `Chroma` to store our documents.
 
 <details>
 <summary>Install ChromaDB</summary>
-As introduced in the [section on the LlamaHub](llama-hub), we can install the ChromaDB vector store with the following command:
+
+As introduced in the <a href="./llama-hub">section on the LlamaHub</a>, we can install the ChromaDB vector store with the following command:
 
 ```bash
 pip install llama-index-vector-stores-chroma
@@ -189,6 +190,8 @@ Let's look at the three main evaluators available:
 - `AnswerRelevancyEvaluator`: Evaluate the relevance of the answer by checking if the answer is relevant to the question.
 - `CorrectnessEvaluator`: Evaluate the correctness of the answer by checking if the answer is correct.
 
+<Tip>Want to learn more about agent observability and evaluation? Continue your journey with the <a href="https://huggingface.co/learn/agents-course/bonus-unit2/introduction">Bonus Unit 2</a>.</Tip>
+
 ```python
 from llama_index.core.evaluation import FaithfulnessEvaluator
 
@@ -209,7 +212,8 @@ This is especially useful when we are building more complex workflows and want t
 
 <details>
 <summary>Install LlamaTrace</summary>
-As introduced in the [section on the LlamaHub](llama-hub), we can install the LlamaTrace callback from Arize Phoenix with the following command:
+
+As introduced in the <a href="./llama-hub">section on the LlamaHub</a>, we can install the LlamaTrace callback from Arize Phoenix with the following command:
 
 ```bash
 pip install -U llama-index-callbacks-arize-phoenix

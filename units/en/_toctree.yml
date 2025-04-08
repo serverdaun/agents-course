@@ -92,7 +92,7 @@
     title: Quick Quiz 2
   - local: unit2/llama-index/conclusion
     title: Conclusion
-- title: Unit 2.3 LangGraph
+- title: Unit 2.3 The LangGraph framework
   sections:
   - local: unit2/langgraph/introduction
     title: Introduction to LangGraph
@@ -108,6 +108,20 @@
     title: Quick Quiz 1
   - local: unit2/langgraph/conclusion
     title: Conclusion
+- title: Unit 3. Use Case for Agentic RAG
+  sections:
+  - local: unit3/agentic-rag/introduction
+    title: Introduction to Use Case for Agentic RAG
+  - local: unit3/agentic-rag/agentic-rag
+    title: Agentic Retrieval Augmented Generation (RAG)
+  - local: unit3/agentic-rag/invitees
+    title: Creating a RAG Tool for Guest Stories
+  - local: unit3/agentic-rag/tools
+    title: Building and Integrating Tools for Your Agent
+  - local: unit3/agentic-rag/agent
+    title: Creating Your Gala Agent
+  - local: unit3/agentic-rag/conclusion
+    title: Conclusion
 - title: Bonus Unit 1. Fine-tuning an LLM for Function-calling
   sections:
   - local: bonus-unit1/introduction
@@ -118,6 +132,16 @@
     title: Let's Fine-Tune your model for Function-calling
   - local: bonus-unit1/conclusion
     title: Conclusion
+- title: Bonus Unit 2. Agent Observability and Evaluation
+  sections:
+  - local: bonus-unit2/introduction
+    title: Introduction
+  - local: bonus-unit2/what-is-agent-observability-and-evaluation
+    title: What is agent observability and evaluation?
+  - local: bonus-unit2/monitoring-and-evaluating-agents-notebook
+    title: Monitoring and evaluating agents
+  - local: bonus-unit2/quiz
+    title: Quiz
 - title: When the next steps are published?
   sections:
   - local: communication/next-units

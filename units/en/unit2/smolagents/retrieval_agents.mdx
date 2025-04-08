@@ -41,7 +41,7 @@ model = HfApiModel()
 
 agent = CodeAgent(
     model=model,
-    tools=[search_tool]
+    tools=[search_tool],
 )
 
 # Example usage
@@ -153,9 +153,9 @@ This enhanced agent can:
 When building agentic RAG systems, the agent can employ sophisticated strategies like:
 
 1. **Query Reformulation:** Instead of using the raw user query, the agent can craft optimized search terms that better match the target documents
-2. **Multi-Step Retrieval** The agent can perform multiple searches, using initial results to inform subsequent queries
-3. **Source Integration** Information can be combined from multiple sources like web search and local documentation
-4. **Result Validation** Retrieved content can be analyzed for relevance and accuracy before being included in responses
+2. **Multi-Step Retrieval:** The agent can perform multiple searches, using initial results to inform subsequent queries
+3. **Source Integration:** Information can be combined from multiple sources like web search and local documentation
+4. **Result Validation:** Retrieved content can be analyzed for relevance and accuracy before being included in responses
 
 Effective agentic RAG systems require careful consideration of several key aspects. The agent **should select between available tools based on the query type and context**. Memory systems help maintain conversation history and avoid repetitive retrievals. Having fallback strategies ensures the system can still provide value even when primary retrieval methods fail. Additionally, implementing validation steps helps ensure the accuracy and relevance of retrieved information.
 

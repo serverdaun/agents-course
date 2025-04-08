@@ -94,7 +94,10 @@ This system prompt is a bit more complex than the one we saw earlier, but it alr
 2. **Cycle instructions** (Thought → Action → Observation)
 
 ```
-Answer the following questions as best you can. You have access to the following tools:
+# This system prompt is a bit more complex and actually contains the function description already appended.
+# Here we suppose that the textual description of the tools has already been appended.
+
+SYSTEM_PROMPT = """Answer the following questions as best you can. You have access to the following tools:
 
 get_weather: Get the current weather in a given location
 
@@ -103,12 +106,13 @@ Specifically, this json should have an `action` key (with the name of the tool t
 
 The only values that should be in the "action" field are:
 get_weather: Get the current weather in a given location, args: {"location": {"type": "string"}}
-example use : 
+example use :
 
 {{
   "action": "get_weather",
   "action_input": {"location": "New York"}
 }}
+
 
 ALWAYS use the following format:
 
@@ -126,7 +130,7 @@ You must always end your output with the following format:
 Thought: I now know the final answer
 Final Answer: the final answer to the original input question
 
-Now begin! Reminder to ALWAYS use the exact characters `Final Answer:` when you provide a definitive answer.
+Now begin! Reminder to ALWAYS use the exact characters `Final Answer:` when you provide a definitive answer. """
 ```
 
 Since we are running the "text_generation" method, we need to apply the prompt manually:
