@@ -422,8 +422,7 @@ alfred_with_memory = CodeAgent(
     tools=[guest_info_tool, weather_info_tool, hub_stats_tool, search_tool], 
     model=model,
     add_base_tools=True,
-    planning_interval=3,
-    memory=True  # Enable conversation memory
+    planning_interval=3
 )
 
 # First interaction
@@ -432,7 +431,7 @@ print("🎩 Alfred's First Response:")
 print(response1)
 
 # Second interaction (referencing the first)
-response2 = alfred_with_memory.run("What projects is she currently working on?")
+response2 = alfred_with_memory.run("What projects is she currently working on?", reset=False)
 print("🎩 Alfred's Second Response:")
 print(response2)
 ```
@@ -483,6 +482,11 @@ print(response['messages'][-1].content)
 
 </hfoption>
 </hfoptions>
+
+Notice that none of these three agent approaches directly couple memory with the agent. Is there a specific reason for this design choice 🧐?
+* smolagents: Memory is not preserved across different execution runs, you must explicitly state it using `reset=False`.
+* LlamaIndex: Requires explicitly adding a context object for memory management within a run.
+* LangGraph: Offers options to retrieve previous messages or utilize a dedicated [MemorySaver](https://langchain-ai.github.io/langgraph/tutorials/introduction/#part-3-adding-memory-to-the-chatbot) component.
 
 ## Conclusion
 
